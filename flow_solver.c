@@ -279,7 +279,7 @@ double now() {
   
 #ifdef _WIN32
   union {
-    LONG_LONG ns100; /*time since 1 Jan 1601 in 100ns units */
+    LONGLONG ns100; /*time since 1 Jan 1601 in 100ns units */
     FILETIME ft;
   } now;
   GetSystemTimeAsFileTime (&now.ft);
@@ -1297,7 +1297,7 @@ void game_order_colors(game_info_t* info,
 
     }
 
-    mergesort(cf, info->num_colors, sizeof(color_features_t),
+    qsort(cf, info->num_colors, sizeof(color_features_t),
               color_features_compare);
 
     for (size_t i=0; i<info->num_colors; ++i) {
